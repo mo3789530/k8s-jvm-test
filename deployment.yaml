@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellojava
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: hellojava
+  template:
+    metadata:
+      labels:
+        name: hellojava
+    spec:
+      containers:
+      - name: hellojava
+        image: mo053/gs-spring-boot-docker:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: JAVA_OPTS
+          value: "-XX:ErrorFile=/dump"
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /dump
+          name: dump-volume
+      volumes:
+      - name: dump-volume
+        emptyDir: {}
