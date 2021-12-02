@@ -20,8 +20,8 @@ spec:
             cpu: 100m
             memory: 100Mi
         env:
-        - name: JAVA_OPTS
-          value: "-XX:ErrorFile=/dump"
+        - name: JAVA_TOOL_OPTIONS
+          value: "-XX:ErrorFile=/dump/error.log -Xmx50m -XX:+CrashOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/dump/oom.bin"
         ports:
         - containerPort: 8080
         volumeMounts:
