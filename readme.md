@@ -16,3 +16,17 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 ```  
 
+# How to JVM error test
+```
+kubectl exec -it <hellojava-pod> /bin/bash
+ps aux | grep java
+kill -SIGSEGV <hellojava-pid>
+```
+
+or
+```
+# Run curl pod 
+kubectl run -it --rm=true busybox --image=yauritux/busybox-curl --restart=Never
+
+curl http://hellojava-service:8080/hello/test
+```
