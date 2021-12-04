@@ -28,5 +28,5 @@ or
 # Run curl pod 
 kubectl run -it --rm=true busybox --image=yauritux/busybox-curl --restart=Never
 
-curl http://hellojava-service:8080/hello/test
+curl http://hellojava-svc:8080/hello/test
 ```
